@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognidocs — Enterprise Document Q&A (Online SaaS & Offline Air-Gapped)</title>
+  <meta name="description" content="AI-powered document intelligence in Cloud SaaS or complete Air-Gapped Offline On-Premise deployment for absolute privacy.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Cognidocs<span class="logo-domain">.co.in</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#variants">Variants</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#demo">Live Demo</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#contact" class="btn btn-outline">Contact Us</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-container">
+      <div class="badge">Next-Gen Document Intelligence</div>
+      <h1>Talk to Your Enterprise Documents. <br><span class="gradient-text">Cloud Fast or 100% Offline.</span></h1>
+      <p class="hero-subtext">
+        Cognidocs delivers high-accuracy Document Q&A. Deploy in our ultra-fast Cloud SaaS or run completely Air-Gapped on your private infrastructure with zero data leakage.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Schedule Demo</a>
+        <a href="#demo" class="btn btn-secondary">Try Interactive Q&A</a>
+      </div>
+      <div class="trust-bar">
+        <span>Trusted for compliance with DPDP Act, SOC2 & GDPR requirements</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Variants Comparison -->
+  <section id="variants" class="variants-section">
+    <div class="section-container">
+      <h2 class="section-title">Two Engine Variants. Zero Compromise.</h2>
+      <p class="section-subtitle">Choose the deployment model that best matches your organization's security posture.</p>
+
+      <div class="variant-grid">
+        <!-- Online Variant -->
+        <div class="variant-card SaaS">
+          <div class="card-tag">Cloud SaaS</div>
+          <h3>Cognidocs Online</h3>
+          <p class="card-desc">Instant setup, high-speed cloud indexing, and zero hardware maintenance for fast-moving teams.</p>
+          <ul class="feature-list">
+            <li>✓ Ultra-fast document parsing (PDF, DOCX, Scans, Tables)</li>
+            <li>✓ Sub-second response latency powered by cloud vector engines</li>
+            <li>✓ Collaborative workspaces & RBAC access control</li>
+            <li>✓ Automatic model upgrades & managed infrastructure</li>
+          </ul>
+          <a href="#contact" class="btn btn-card">Get Online SaaS Access</a>
+        </div>
+
+        <!-- Offline Variant -->
+        <div class="variant-card OnPrem">
+          <div class="card-tag tag-offline">Air-Gapped / On-Prem</div>
+          <h3>Cognidocs Offline</h3>
+          <p class="card-desc">Total sovereignty. Deploy containerized LLMs & vector DBs on your local GPUs or private cloud.</p>
+          <ul class="feature-list">
+            <li>✓ 100% Air-Gapped setup—Zero outbound network calls</li>
+            <li>✓ Local quantized Open-Weight LLMs (vLLM / Ollama backends)</li>
+            <li>✓ Local Vector Store (pgvector / Qdrant) within your VPC</li>
+            <li>✓ Full DPDP Act & Financial / Legal compliance ready</li>
+          </ul>
+          <a href="#contact" class="btn btn-card btn-offline-card">Deploy On-Premise</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Architecture Section -->
+  <section id="architecture" class="arch-section">
+    <div class="section-container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Select a mode to inspect data flow and privacy controls.</p>
+
+      <div class="arch-toggle">
+        <button class="toggle-btn active" id="btnOnlineArch" onclick="switchArch('online')">Online SaaS Architecture</button>
+        <button class="toggle-btn" id="btnOfflineArch" onclick="switchArch('offline')">Offline Air-Gapped Architecture</button>
+      </div>
+
+      <div class="arch-box" id="archDisplay">
+        <!-- Content inserted dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo Section -->
+  <section id="demo" class="demo-section">
+    <div class="section-container">
+      <h2 class="section-title">Experience Cognidocs Q&A</h2>
+      <p class="section-subtitle">Test how our retrieval-augmented generation engine responds with exact citations.</p>
+
+      <div class="demo-widget">
+        <div class="demo-sidebar">
+          <h4>Loaded Sample Document</h4>
+          <div class="doc-badge">📄 Enterprise_Security_Policy_2026.pdf</div>
+          <div class="doc-preview">
+            <p><strong>Excerpt:</strong> "...Section 4.2: All employees accessing local network nodes must use multi-factor authentication (MFA). Data storage for internal records must comply with local residency rules, ensuring no data exits the designated region unless explicitly encrypted with AES-256 keys..."</p>
+          </div>
+        </div>
+
+        <div class="demo-chat">
+          <div class="chat-header">Cognidocs Q&A Engine (Demo Mode)</div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="message system">Document indexed successfully. Ask a question about the security policy.</div>
+          </div>
+          <div class="chat-input-row">
+            <input type="text" id="userInput" placeholder="e.g., What are the rules for data storage?" onkeypress="handleKey(event)">
+            <button onclick="sendQuestion()">Ask</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security & Compliance -->
+  <section id="security" class="security-section">
+    <div class="section-container">
+      <h2 class="section-title">Enterprise Security Standards</h2>
+      <div class="security-grid">
+        <div class="sec-card">
+          <div class="sec-icon">🔒</div>
+          <h4>Zero Data Retention</h4>
+          <p>In Online Mode, your document chunks and vector embeddings are stored in isolated encrypted customer spaces and never used to train global AI models.</p>
+        </div>
+        <div class="sec-card">
+          <div class="sec-icon">🛡️</div>
+          <h4>Air-Gapped Isolation</h4>
+          <p>In Offline Mode, Cognidocs operates completely severed from the external internet, fulfilling strict Defense, Healthcare, and BFSI criteria.</p>
+        </div>
+        <div class="sec-card">
+          <div class="sec-icon">🇮🇳</div>
+          <h4>Data Residency</h4>
+          <p>Local cloud nodes hosted in Mumbai and Hyderabad guarantee full compliance with Indian data sovereignty guidelines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form / CTA -->
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <div class="contact-card">
+        <h2>Request a Custom Demo or Deployment Quote</h2>
+        <p>Tell us about your organization's document volume and privacy requirements.</p>
+
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-group-row">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Work Email" required>
+          </div>
+          <div class="form-group-row">
+            <input type="text" placeholder="Company Name" required>
+            <select required>
+              <option value="" disabled selected>Preferred Variant</option>
+              <option value="online">Online SaaS Mode</option>
+              <option value="offline">Offline On-Premise / Air-Gapped Mode</option>
+              <option value="both">Evaluation / Both Modes</option>
+            </select>
+          </div>
+          <textarea rows="4" placeholder="Briefly describe your use case (e.g., policy manuals, legal contracts, technical specs)..."></textarea>
+          <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+        </form>
+        <div id="formStatus" class="form-status"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="logo-text">Cognidocs<span class="logo-domain">.co.in</span></span>
+        <p>Next-Generation Enterprise Document Q&A Intelligence.</p>
+      </div>
+      <div class="footer-right">
+        <p>&copy; 2026 Cognidocs Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
